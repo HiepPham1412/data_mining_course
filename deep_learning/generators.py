@@ -62,7 +62,6 @@ class ImageGenerator(BasicGenerator):
         draw = ImageDraw.Draw(img)
 
         w, h = draw.textsize(text, font=font)
-        print('w {},h {}'.format(w,h))
 
         draw.text(((self.width-w) / 2,(self.height-h) / 2),text,font=font)
 
