@@ -32,7 +32,7 @@ class MediumModel:
         x = Dropout(0.25)(x)
 
         # CONV => RELU => POOL
-        x = Conv2D(32, (20, 11), padding="same")(x)
+        x = Conv2D(32, kernel_size, padding="same")(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
         x = MaxPooling2D(pool_size=(2, 2))(x)
@@ -88,7 +88,7 @@ class DeepModel:
         x = Dropout(0.25)(x)
 
         # CONV => RELU => POOL
-        x = Conv2D(32, (20, 11), padding="same")(x)
+        x = Conv2D(32, kernel_size, padding="same")(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
         x = MaxPooling2D(pool_size=(2, 2))(x)
@@ -119,7 +119,7 @@ class DeepModel:
         return x
 
     @staticmethod
-    def build(width = 200, height = 20, numclasses =26, finalAct="softmax"):
+    def build(width = 200, height = 20, numclasses =26, kernel_size = (20,11),  finalAct="softmax"):
         
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
