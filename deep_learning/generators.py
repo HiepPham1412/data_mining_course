@@ -23,7 +23,8 @@ class BasicGenerator(keras.utils.Sequence, ABC):
         return self.generate_batch(self.batch_size)
 
 class ImageGenerator(BasicGenerator):
-    def __init__(self, blur_factor=4, height=20, width=200, font_size=20, flatten = False, *args, **kwargs):
+    def __init__(self, blur_factor=4, height=20, width=200, font_size=20, flatten = False,\
+                random_blur = False, blur_max=5, *args, **kwargs):
         """
         Initializes an dynamic image generator.
 
@@ -40,6 +41,8 @@ class ImageGenerator(BasicGenerator):
         self.blur_factor = blur_factor
         self.character_count = int(self.width / self.font_size)
         self.flatten = flatten
+        self.random_blur = random_blur
+        self.blur_max = blur_max
         super(ImageGenerator, self).__init__(*args, **kwargs)
 
     def create_image(self):
@@ -64,8 +67,14 @@ class ImageGenerator(BasicGenerator):
         w, h = draw.textsize(text, font=font)
 
         draw.text(((self.width-w) / 2,(self.height-h) / 2),text,font=font)
-
-        img_filtered = img.filter(ImageFilter.GaussianBlur(self.blur_factor))
+        
+        if self.random_blur == False:
+            img_filtered = img.filter(ImageFilter.GaussianBlur(self.blur_factor))
+        elif self.random_blur == True:
+            rand_blur_factor = int(round(np.random.uniform(1, self.blur_max),0))
+            img_filtered = img.filter(ImageFilter.GaussianBlur(rand_blur_factor))
+        else:
+            pass
 
         return img_filtered, text, img
 
