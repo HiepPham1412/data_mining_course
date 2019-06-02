@@ -49,7 +49,7 @@ class MediumModel:
         return x
 
     @staticmethod
-    def build(width = 200, height = 20, numclasses =26, finalAct="softmax"):
+    def build(width = 200, height = 20, numclasses =26, kernel_size = (20,11), finalAct="softmax"):
         
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
