@@ -121,8 +121,8 @@ class MediumModel:
         
         return model
      
-     @staticmethod
-     def build_diff_length(width = 200, height = 20, numclasses =26, kernel_size = (20,11), finalAct="softmax"):
+    @staticmethod
+    def build_diff_length(width = 200, height = 20, numclasses =26, kernel_size = (20,11), finalAct="softmax"):
         
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
