@@ -87,7 +87,7 @@ class MediumModel:
         x = BatchNormalization()(x)
         x = Dropout(0.5)(x)
         x = Dense(numclasses)(x)
-        x = Activation(finalAct, name="deep_branch")(x)
+        x = Activation(finalAct, name=name)(x)
 
         # return the category prediction sub-network
         return x
