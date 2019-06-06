@@ -50,60 +50,48 @@ class MediumModel:
 
         return x
     # a deeper/longer branch to handle letters in the middle
-    def build_a_deep_branch(inputs, numclasses =26, kernel_size = (20,11), finalAct="softmax", name = None):
+    def build_a_deep_branch(inputs, numclasses =26, kernel_size = (20,11), kernel_size_deep = (3,3), finalAct="softmax", name = None):
         
-        # FIRST CONVOL BLOCK: conv -> relu -> pool
-        x = Conv2D(filters=32,kernel_size= kernel_size,padding='same')(inputs)
+        # CONV => RELU => POOL
+        x = Conv2D(32, kernel_size =kernel_size, padding="same")(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
         x = MaxPooling2D(pool_size=(3, 3))(x)
         x = Dropout(0.25)(x)
 
-        # SECOND CONVOL BLOCK: conv -> relu -> pool
-        x = Conv2D(32, kernel_size, padding="same")(x)
+        # (CONV => RELU) * 2 => POOL
+        x = Conv2D(64, kernel_size =kernel_size, padding="same")(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
-        x = Conv2D(32, kernel_size, padding="same")(x)
-        x = MaxPooling2D(pool_size=(2, 2))(x)
+        x = Conv2D(64, kernel_size =kernel_size, padding="same")(x)
+        x = Activation("relu")(x)
         x = BatchNormalization()(x)
+        x = MaxPooling2D(pool_size=(2, 2))(x)
         x = Dropout(0.25)(x)
 
-        # THIRD CONVOL BLOCK: conv -> relu -> pool
-        x = Conv2D(32, kernel_size, padding="same")(x)
+        # (CONV => RELU) * 2 => POOL
+        x = Conv2D(128, kernel_size =kernel_size_deep, padding="same")(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
-        x = Conv2D(32, kernel_size, padding="same")(x)
-        x = MaxPooling2D(pool_size=(2, 2))(x)
+        x = Conv2D(128, kernel_size =kernel_size_deep, padding="same")(x)
+        x = Activation("relu")(x)
         x = BatchNormalization()(x)
+        x = MaxPooling2D(pool_size=(2, 2))(x)
         x = Dropout(0.25)(x)
 
-        # FOURTH CONVOL BLOCK: conv -> relu -> pool
-        x = Conv2D(32, kernel_size, padding="same")(x)
-        x = Activation("relu")(x)
-        x = BatchNormalization()(x)
-        x = Conv2D(32, kernel_size, padding="same")(x)
-        x = MaxPooling2D(pool_size=(2, 2))(x)
-        x = BatchNormalization()(x)
-        x = Dropout(0.25)(x)
-        
-        # FIRST DENSE LAYER
+        # define a branch of output layers for the number of different
+        # clothing categories (i.e., shirts, jeans, dresses, etc.)
         x = Flatten()(x)
         x = Dense(256)(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
         x = Dropout(0.5)(x)
-        
-        # SECOND DESNE LAYER
-        x = Dense(128)(x)
-        x = Activation("relu")(x)
-        x = BatchNormalization()(x)
-        x = Dropout(0.5)(x)
-        
-        # OUTPUT LAYER
         x = Dense(numclasses)(x)
-        x = Activation(finalAct, name=name)(x)
+        x = Activation(finalAct, name="deep_branch")(x)
 
+        # return the category prediction sub-network
         return x
+
 
     @staticmethod
     def build(width = 200, height = 20, numclasses =26, kernel_size = (20,11), finalAct="softmax"):
@@ -128,19 +116,25 @@ class MediumModel:
         return model
      
     @staticmethod
-    def build_diff_length(width = 200, height = 20, numclasses =26, kernel_size = (20,11), finalAct="softmax"):
+    def build_diff_length(width = 200, height = 20, numclasses =26, kernel_size = (20,11),kernel_size_deep=(3,3), finalAct="softmax"):
         
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
         
-        first  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'first')
+        first  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
         second = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'second')
-        third  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'third')
-        fourth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fourth')
-        fifth  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fifth')
-        sixth  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'sixth')
-        seventh= MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'seventh')
-        eighth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'eighth')
+        third  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'third')
+        fourth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fourth')
+        fifth  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fifth')
+        sixth  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'sixth')
+        seventh= MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'seventh')
+        eighth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'eighth')
         nineth = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'nineth')
         tenth  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
         outputs=[first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth]
