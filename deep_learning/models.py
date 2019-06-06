@@ -53,7 +53,7 @@ class MediumModel:
     def build_a_deep_branch(inputs, numclasses =26, kernel_size = (20,11), kernel_size_deep = (3,3), finalAct="softmax", name = None):
         
         # CONV => RELU => POOL
-        x = Conv2D(32, kernel_size =kernel_size, padding="same")(x)
+        x = Conv2D(32, kernel_size =kernel_size, padding="same")(inputs)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
         x = MaxPooling2D(pool_size=(3, 3))(x)
