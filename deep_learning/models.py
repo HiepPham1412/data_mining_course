@@ -63,21 +63,27 @@ class MediumModel:
         x = Conv2D(32, kernel_size, padding="same")(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
+        x = Conv2D(32, kernel_size, padding="same")(x)
         x = MaxPooling2D(pool_size=(2, 2))(x)
+        x = BatchNormalization()(x)
         x = Dropout(0.25)(x)
 
         # THIRD CONVOL BLOCK: conv -> relu -> pool
         x = Conv2D(32, kernel_size, padding="same")(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
+        x = Conv2D(32, kernel_size, padding="same")(x)
         x = MaxPooling2D(pool_size=(2, 2))(x)
+        x = BatchNormalization()(x)
         x = Dropout(0.25)(x)
 
         # FOURTH CONVOL BLOCK: conv -> relu -> pool
         x = Conv2D(32, kernel_size, padding="same")(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
+        x = Conv2D(32, kernel_size, padding="same")(x)
         x = MaxPooling2D(pool_size=(2, 2))(x)
+        x = BatchNormalization()(x)
         x = Dropout(0.25)(x)
         
         # FIRST DENSE LAYER
