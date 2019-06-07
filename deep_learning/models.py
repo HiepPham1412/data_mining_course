@@ -122,7 +122,8 @@ class MediumModel:
         inputs = Input(shape=inputShape)
         
         first  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
-        second = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'second')
+        second = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'second')
         third  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'third')
         fourth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
@@ -135,7 +136,8 @@ class MediumModel:
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'seventh')
         eighth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'eighth')
-        nineth = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'nineth')
+        nineth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'nineth')
         tenth  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
         outputs=[first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth]
         model = Model(inputs=inputs,outputs= outputs, name="ten outputs")
