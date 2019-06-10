@@ -15,7 +15,7 @@ import generators
 import importlib as lb
 lb.reload(generators)
 
-class MediumModel:
+class Model:
     
     def build_a_branch(inputs, numclasses =26, kernel_size = (20,11), finalAct="softmax", name = None):
         
@@ -92,21 +92,21 @@ class MediumModel:
 
 
     @staticmethod
-    def build(width = 200, height = 20, numclasses =26, kernel_size = (20,11), finalAct="softmax"):
+    def build_med_model(width = 200, height = 20, numclasses =26, kernel_size = (20,11), finalAct="softmax"):
         
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
         
-        first  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'first')
-        second = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'second')
-        third  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'third')
-        fourth = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fourth')
-        fifth  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fifth')
-        sixth  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'sixth')
-        seventh= MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'seventh')
-        eighth = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'eighth')
-        nineth = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'nineth')
-        tenth  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
+        first  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'first')
+        second = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'second')
+        third  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'third')
+        fourth = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fourth')
+        fifth  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fifth')
+        sixth  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'sixth')
+        seventh= Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'seventh')
+        eighth = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'eighth')
+        nineth = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'nineth')
+        tenth  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
         outputs=[first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth]
         model = Model(inputs=inputs,outputs= outputs, name="ten outputs")
         # return the constructed network architecture
@@ -119,24 +119,24 @@ class MediumModel:
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
         
-        first  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
-        second = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        first  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
+        second = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'second')
-        third  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        third  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'third')
-        fourth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        fourth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fourth')
-        fifth  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        fifth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fifth')
-        sixth  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        sixth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'sixth')
-        seventh= MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        seventh= Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'seventh')
-        eighth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        eighth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'eighth')
-        nineth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        nineth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'nineth')
-        tenth  = MediumModel.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
+        tenth  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
         outputs=[first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth]
         model = Model(inputs=inputs,outputs= outputs, name="ten outputs")
         # return the constructed network architecture
@@ -149,24 +149,24 @@ class MediumModel:
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
         
-        first  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
-        second = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        first  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
+        second = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'second')
-        third  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        third  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'third')
-        fourth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        fourth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fourth')
-        fifth  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        fifth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fifth')
-        sixth  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        sixth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'sixth')
-        seventh= MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        seventh= Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'seventh')
-        eighth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        eighth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'eighth')
-        nineth = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        nineth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'nineth')
-        tenth  = MediumModel.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
+        tenth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
         
         outputs=[first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth]
         
