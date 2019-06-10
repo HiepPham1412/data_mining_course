@@ -80,7 +80,6 @@ class MediumModel:
         x = Dropout(0.25)(x)
 
         # define a branch of output layers for the number of different
-        # clothing categories (i.e., shirts, jeans, dresses, etc.)
         x = Flatten()(x)
         x = Dense(256)(x)
         x = Activation("relu")(x)
@@ -89,7 +88,6 @@ class MediumModel:
         x = Dense(numclasses)(x)
         x = Activation(finalAct, name=name)(x)
 
-        # return the category prediction sub-network
         return x
 
 
@@ -170,7 +168,7 @@ class DeepModel:
         x = Dropout(0.25)(x)
 
         # CONV => RELU => POOL
-        x = Conv2D(64, (5, 5), padding="same")(x)
+        x = Conv2D(32, kernel_size, padding="same")(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
         x = MaxPooling2D(pool_size=(2, 2))(x)
@@ -178,7 +176,7 @@ class DeepModel:
 
         
         x = Flatten()(x)
-        x = Dense(512)(x)
+        x = Dense(256)(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
         x = Dropout(0.5)(x)
