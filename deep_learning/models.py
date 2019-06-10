@@ -147,10 +147,12 @@ class LetterReg:
     def build_deep_model(width = 200, height = 20, numclasses =26, kernel_size = (20,11),kernel_size_deep=(3,3), finalAct="softmax"):
         
         inputShape = (height, width, 1)
+        
         inputs = Input(shape=inputShape)
         
-        first  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
-        second = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        first  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep,finalAct=finalAct, name = 'first')
+        second = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'second')
         third  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'third')
@@ -166,7 +168,8 @@ class LetterReg:
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'eighth')
         nineth = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'nineth')
-        tenth  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
+        tenth  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+                kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'tenth')
         
         outputs=[first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth]
         
