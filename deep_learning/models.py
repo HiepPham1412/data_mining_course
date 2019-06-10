@@ -176,16 +176,10 @@ class DeepModel:
 
         
         x = Flatten()(x)
-        x = Dense(256)(x)
+        x = Dense(512)(x)
         x = Activation("relu")(x)
         x = BatchNormalization()(x)
         x = Dropout(0.5)(x)
-        
-        x = Dense(128)(x)
-        x = Activation("relu")(x)
-        x = BatchNormalization()(x)
-        x = Dropout(0.5)(x)
-
         x = Dense(numclasses)(x)
         x = Activation(finalAct, name=name)(x)
 
