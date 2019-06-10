@@ -15,7 +15,7 @@ import generators
 import importlib as lb
 lb.reload(generators)
 
-class Model:
+class LetterReg:
     
     def build_a_branch(inputs, numclasses =26, kernel_size = (20,11), finalAct="softmax", name = None):
         
@@ -97,16 +97,16 @@ class Model:
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
         
-        first  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'first')
-        second = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'second')
-        third  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'third')
-        fourth = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fourth')
-        fifth  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fifth')
-        sixth  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'sixth')
-        seventh= Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'seventh')
-        eighth = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'eighth')
-        nineth = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'nineth')
-        tenth  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
+        first  = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'first')
+        second = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'second')
+        third  = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'third')
+        fourth = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fourth')
+        fifth  = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'fifth')
+        sixth  = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'sixth')
+        seventh= LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'seventh')
+        eighth = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'eighth')
+        nineth = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'nineth')
+        tenth  = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
         outputs=[first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth]
         model = Model(inputs=inputs,outputs= outputs, name="ten outputs")
         # return the constructed network architecture
@@ -119,24 +119,24 @@ class Model:
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
         
-        first  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
-        second = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        first  = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
+        second = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'second')
-        third  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        third  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'third')
-        fourth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        fourth = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fourth')
-        fifth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        fifth  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fifth')
-        sixth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        sixth  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'sixth')
-        seventh= Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        seventh= LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'seventh')
-        eighth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        eighth = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'eighth')
-        nineth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        nineth = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'nineth')
-        tenth  = Model.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
+        tenth  = LetterReg.build_a_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
         outputs=[first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth]
         model = Model(inputs=inputs,outputs= outputs, name="ten outputs")
         # return the constructed network architecture
@@ -149,24 +149,24 @@ class Model:
         inputShape = (height, width, 1)
         inputs = Input(shape=inputShape)
         
-        first  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
+        first  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,finalAct=finalAct, name = 'first')
         second = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'second')
-        third  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        third  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'third')
-        fourth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        fourth = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fourth')
-        fifth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        fifth  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'fifth')
-        sixth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        sixth  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'sixth')
-        seventh= Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        seventh= LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'seventh')
-        eighth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        eighth = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'eighth')
-        nineth = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
+        nineth = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size,\
                 kernel_size_deep = kernel_size_deep, finalAct=finalAct, name = 'nineth')
-        tenth  = Model.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
+        tenth  = LetterReg.build_a_deep_branch(inputs, numclasses = numclasses, kernel_size= kernel_size, finalAct=finalAct, name = 'tenth')
         
         outputs=[first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth]
         
