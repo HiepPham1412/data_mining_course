@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import string
 from PIL import Image, ImageDraw, ImageFont,ImageFilter
+import re
 
 # function to plot the convergence of accuracy in train set and test set
 def convergence_plot(history_dict):
